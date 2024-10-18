@@ -1,0 +1,105 @@
+\documentclass{article}
+\input{file-setup.tex}
+% \usepackage{zref}
+% \usepackage{biblatex} %Imports biblatex package
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{references.bib} %Import the bibliography file
+\begin{document}
+
+\today \par
+\vspace{.5cm}
+\noindent Háskólinn í Reykjavík, Embedded Systems Programming, \textbf{Project 4} \par
+\noindent \textbf{Eyþór Mikael Eyþórsson}, \texttt{eythore19@ru.is}\par
+\noindent \textbf{Vilhjálmur Páll Thorarensen}, \texttt{vilhjalmurt19@ru.is}\par
+%\noindent Instructors: \textbf{TEACHER} \par
+
+\section*{Part 0}
+% Wire RPi input and output pins to the motor encoder outputs and (optionally) an external LED. There isn't a pin header on the Raspberry Pi Zero 2 W.  In V207, you can obtain a header and solder it onto the board.  The pins should be oriented upwards if you are using a breakout board. Be sure there are no solder bridges that short-circuit between solder pads.
+The RPi input and output pins were wired to the motor encoder and external LED 
+in the manner shown in Figure~\ref{fig:rpi-encoder-connection}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.45\textwidth]{~/Pictures/big-chungus.png}
+	\end{center}
+	\caption{The motor encoder connected to the Raspberry
+		Pi}\label{fig:rpi-encoder-connection}
+\end{figure}
+
+\section*{Part 1}
+
+The state of the encoder was written dynamically to the LED pin using \begin{enumerate}
+    \item Gpiod commands from the shell script in Listing~\ref{lst:shell-script}
+    \item Gpiod from the C++ application in Listing~\ref{lst:cpp-polling}, polling the pin status using a timed read
+    \item Gpiod from the C++ application in Listing~\ref{lst:cpp-events} making use of gpiod events 
+    \item The kernel module in Listing~\ref{lst:kernel-module} using interrupts
+\end{enumerate} and the response time and CPU load were measured using an oscilloscope and
+the \texttt{top} command, respectively. The results were compared in
+Table~\ref{tab:part1-results} 
+
+\subsection*{Bash script}\label{sub:Bash script} % (fold)
+\begin{lstlisting}[language=bash,caption={Shell script},label=lst:shell-script]
+#!/bin/bash
+echo anus licker
+\end{lstlisting}
+
+% subsection Bash script (end)
+
+\subsection*{Polling in C++}\label{sub:Polling in C++} % (fold)
+\begin{lstlisting}[language=c++,caption={C++ application polling pin status using gpiod},label=lst:cpp-polling]
+#!/bin/bash
+echo anus licker
+\end{lstlisting}
+
+% subsection Polling in C++ (end)
+
+\subsection*{Events in C++}\label{sub:Events in C++} % (fold)
+\begin{lstlisting}[language=c++,caption={C++ application reading pins using
+events},label=lst:cpp-events]
+#!/bin/bash
+echo anus licker
+\end{lstlisting}
+
+% subsection Events in C++ (end)
+
+\subsection*{Kernel module}\label{sub:Kernel module} % (fold)
+\begin{lstlisting}[language=c,caption={Kernel module},label=lst:kernel-module]
+#!/bin/bash
+echo anus licker
+\end{lstlisting}
+
+% subsection Kernel module (end)
+
+\subsection*{Conclusion}
+
+
+\begin{itemize}
+    \item Which mechanism would suffice for counting encoder pulses?
+    \item What is the associated CPU load (reported by top)?
+    \item Do the results change when the CPU is fully loaded (by some other process)?
+    \item Adjust the process priority in an attempt to improve response under CPU load conditions.
+\end{itemize}
+
+\begin{table}[h]
+    \caption{Results of Part 1, showing CPU load and response time for various methods of
+    performing IO operations}\label{tab:part1-results}
+    \begin{center}
+        \begin{tabular}[c]{l|c|c}
+            \hline
+            \multicolumn{1}{c|}{\textbf{Method description}} & 
+            \multicolumn{1}{c|}{\textbf{Response time[ms]}} & 
+            \multicolumn{1}{c}{\textbf{CPU load[\%]}} \\
+            \hline
+            homosex & 69 & 99 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+
+\section*{Part 2}
+
+%\newpage
+%\printbibliography
+
+\end{document}
